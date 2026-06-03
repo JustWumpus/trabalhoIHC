@@ -2,294 +2,974 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jornada do Usuário e Service Blueprint</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Jornada do Usuário e Service Blueprint – IHC</title>
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
+ <link rel="stylesheet"
+ href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
 
-    <style>
+ <style>
 
-        .container {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 2rem 1.2rem;
-        }
+ /* ESTRUTURA DA PÁGINA */
 
-        .card {
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            border-radius: 14px;
-            border: 1px solid rgba(120, 140, 180, 0.25);
-            background: rgba(255, 255, 255, 0.03);
-        }
+ body {
+ padding: 0;
+ }
 
-        .alerta {
-            padding: 1rem 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 5px solid #4da3ff;
-            background: rgba(77, 163, 255, 0.08);
-            border-radius: 10px;
-        }
+ .page {
+ max-width: 1040px;
+ margin: 0 auto;
+ padding: 2.5rem 1.25rem 3.5rem;
+ }
 
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
+ /* HERO */
 
-        .etapa {
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(120, 140, 180, 0.25);
-            background: rgba(255, 255, 255, 0.04);
-        }
+ .hero {
+ display: grid;
+ grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1.1fr);
+ gap: 1.5rem;
+ margin-bottom: 2rem;
+ }
 
-        /* BLUEPRINT */
-        .blueprint-diagram {
-            margin-top: 2rem;
-        }
+ @media (max-width: 780px) {
+ .hero { grid-template-columns: 1fr; }
+ .layout { grid-template-columns: 1fr; }
+ }
 
-        .layer {
-            margin-bottom: 1rem;
-        }
+ /* LAYOUT PRINCIPAL */
 
-        .layer h4 {
-            margin-bottom: 0.5rem;
-        }
+ .layout {
+ display: grid;
+ grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.2fr);
+ gap: 1.8rem;
+ }
 
-        .cells {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
+ /* TIMELINE DA JORNADA */
 
-        .cells div {
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(120, 140, 180, 0.25);
-            background: rgba(255, 255, 255, 0.04);
-            font-size: 0.9rem;
-        }
+ .journey-steps {
+ display: flex;
+ flex-direction: column;
+ gap: 0;
+ margin-top: 1rem;
+ }
 
-        .line {
-            position: relative;
-            text-align: center;
-            margin: 15px 0;
-        }
+ .journey-step {
+ display: grid;
+ grid-template-columns: 36px 1fr;
+ gap: 0.75rem;
+ position: relative;
+ }
 
-        .line span {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            background: #0f172a;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
+ .journey-step:not(:last-child)::after {
+ content: "";
+ position: absolute;
+ left: 17px;
+ top: 36px;
+ bottom: -8px;
+ width: 2px;
+ background: linear-gradient(180deg, rgba(56,189,248,0.4), rgba(56,189,248,0.05));
+ }
 
-        .interaction::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            border-top: 2px dashed #4da3ff;
-        }
+ .step-dot {
+ width: 36px;
+ height: 36px;
+ border-radius: 999px;
+ background: rgba(56,189,248,0.12);
+ border: 1.5px solid rgba(56,189,248,0.5);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.78rem;
+ font-weight: 700;
+ color: #38bdf8;
+ flex-shrink: 0;
+ margin-top: 0.1rem;
+ }
 
-        .visibility::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            border-top: 2px dashed #ffb74d;
-        }
+ .step-body {
+ padding-bottom: 1.25rem;
+ }
 
-        .user h4 { color: #2ecc71; }
-        .frontstage h4 { color: #3498db; }
-        .backstage h4 { color: #f1c40f; }
-        .support h4 { color: #9b59b6; }
+ .step-title {
+ font-size: 0.92rem;
+ font-weight: 600;
+ color: #e5e7eb;
+ margin-bottom: 0.2rem;
+ }
 
-    </style>
+ .step-desc {
+ font-size: 0.87rem;
+ color: #9ca3af;
+ line-height: 1.65;
+ margin: 0;
+ }
 
+ .step-emotion {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.3rem;
+ margin-top: 0.35rem;
+ font-size: 0.78rem;
+ color: #9ca3af;
+ background: rgba(15,23,42,0.9);
+ border: 1px solid rgba(148,163,184,0.2);
+ padding: 0.15rem 0.5rem;
+ border-radius: 999px;
+ }
+
+ /* BLUEPRINT */
+
+ .blueprint-layers {
+ display: flex;
+ flex-direction: column;
+ gap: 0;
+ margin-top: 1rem;
+ }
+
+ .bp-layer {
+ padding: 1rem 0;
+ }
+
+ .bp-layer-title {
+ font-size: 0.8rem;
+ text-transform: uppercase;
+ letter-spacing: 0.09em;
+ font-weight: 700;
+ margin-bottom: 0.65rem;
+ }
+
+ .bp-cells {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 0.6rem;
+ }
+
+ @media (max-width: 600px) {
+ .bp-cells { grid-template-columns: 1fr; }
+ }
+
+ .bp-cell {
+ padding: 0.75rem 0.85rem;
+ border-radius: 10px;
+ background: rgba(15,23,42,0.75);
+ border: 1px solid rgba(148,163,184,0.18);
+ font-size: 0.85rem;
+ color: #9ca3af;
+ line-height: 1.55;
+ }
+
+ .bp-cell strong {
+ display: block;
+ font-size: 0.76rem;
+ font-weight: 600;
+ margin-bottom: 0.25rem;
+ }
+
+ .bp-divider {
+ position: relative;
+ text-align: center;
+ margin: 0.1rem 0;
+ }
+
+ .bp-divider::before {
+ content: "";
+ position: absolute;
+ top: 50%;
+ left: 0;
+ right: 0;
+ border-top: 1.5px dashed;
+ }
+
+ .bp-divider span {
+ position: relative;
+ background: #050816;
+ padding: 0.25rem 0.8rem;
+ font-size: 0.72rem;
+ border-radius: 999px;
+ border: 1px solid rgba(255,255,255,0.1);
+ color: #9ca3af;
+ }
+
+ .bp-divider.interaction::before { border-color: rgba(56,189,248,0.5); }
+ .bp-divider.visibility::before { border-color: rgba(249,188,45,0.5); }
+ .bp-divider.internal::before { border-color: rgba(168,85,247,0.4); }
+
+ .user-layer .bp-layer-title { color: #2ecc71; }
+ .front-layer .bp-layer-title { color: #38bdf8; }
+ .back-layer .bp-layer-title { color: #f1c40f; }
+ .support-layer .bp-layer-title { color: #a855f7; }
+
+ .user-layer .bp-cell { border-color: rgba(46,204,113,0.2); background: rgba(46,204,113,0.05); }
+ .front-layer .bp-cell { border-color: rgba(56,189,248,0.2); background: rgba(56,189,248,0.05); }
+ .back-layer .bp-cell { border-color: rgba(241,196,15,0.2); background: rgba(241,196,15,0.05); }
+ .support-layer .bp-cell { border-color: rgba(168,85,247,0.2); background: rgba(168,85,247,0.05); }
+
+ /* COMPARAÇÃO */
+
+ .compare-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 0.8rem;
+ margin-top: 0.75rem;
+ }
+
+ @media (max-width: 500px) {
+ .compare-grid { grid-template-columns: 1fr; }
+ }
+
+ .compare-col {
+ padding: 0.9rem 1rem;
+ border-radius: 10px;
+ border: 1px solid rgba(148,163,184,0.18);
+ background: rgba(15,23,42,0.75);
+ }
+
+ .compare-col h5 {
+ font-size: 0.84rem;
+ font-weight: 700;
+ margin-bottom: 0.5rem;
+ }
+
+ .compare-col ul {
+ margin: 0;
+ padding-left: 1.1rem;
+ font-size: 0.83rem;
+ color: #9ca3af;
+ line-height: 1.7;
+ }
+
+ .col-journey h5 { color: #38bdf8; }
+ .col-blueprint h5 { color: #f1c40f; }
+
+ /* ATIVIDADE */
+
+ .activity-steps {
+ display: flex;
+ flex-direction: column;
+ gap: 0.7rem;
+ margin-top: 0.5rem;
+ }
+
+ .act-step {
+ display: flex;
+ gap: 0.75rem;
+ align-items: flex-start;
+ }
+
+ .act-num {
+ width: 26px;
+ height: 26px;
+ border-radius: 999px;
+ background: rgba(168,85,247,0.15);
+ border: 1px solid rgba(168,85,247,0.5);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.75rem;
+ font-weight: 700;
+ color: #a855f7;
+ flex-shrink: 0;
+ }
+
+ .act-text {
+ font-size: 0.87rem;
+ color: #9ca3af;
+ line-height: 1.65;
+ padding-top: 0.2rem;
+ }
+
+ .act-text strong { color: #e5e7eb; }
+
+ /* TABELA */
+
+ .mini-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 0.75rem 0 1rem;
+ font-size: 0.86rem;
+ color: #9ca3af;
+ }
+
+ .mini-table th, .mini-table td {
+ border: 1px solid rgba(148,163,184,0.2);
+ padding: 0.6rem 0.75rem;
+ vertical-align: top;
+ text-align: left;
+ }
+
+ .mini-table th {
+ color: #e5e7eb;
+ background: rgba(15,23,42,0.95);
+ font-size: 0.82rem;
+ }
+
+ /* GERAL */
+
+ .section-gap {
+ margin-top: 1.7rem;
+ }
+
+ </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-    <header>
-        <h1>Jornada do Usuário e Service Blueprint</h1>
-        <p>Interação Humano-Computador (IHC)</p>
-    </header>
+ <a href="https://wilcilene.github.io/estudos/disciplinas/ihc/metodologias/index.html"
+ class="back-link">
+ <span>←</span> Voltar ao índice de metodologias
+ </a>
 
-    <!-- INTRO -->
-    <section class="card">
+ <!-- HERO -->
 
-        <h2>Introdução</h2>
+ <div class="hero">
 
-        <p>
-            Em IHC, compreender como o usuário interage com sistemas digitais
-            é essencial para projetar boas experiências.
-        </p>
+ <div class="hero-main">
+ <div class="badge">
+ <span class="badge-dot"></span>
+ Metodologia de IHC
+ </div>
+ <h1 class="hero-title" style="margin-top:0.75rem">
+ Jornada do Usuário<br>
+ <span style="color:var(--accent)">e Service Blueprint</span>
+ </h1>
+ <p class="hero-text">
+ Ferramentas complementares para mapear a experiência do usuário
+ e os processos que a sustentam, amplamente usadas em
+ Interação Humano-Computador para identificar pontos de melhoria
+ em sistemas digitais.
+ </p>
+ <div class="hero-tags" style="margin-top:0.9rem">
+ <span class="tag">UX Research</span>
+ <span class="tag">Mapeamento de Experiência</span>
+ <span class="tag">Processos de Serviço</span>
+ <span class="tag">Design Centrado no Usuário</span>
+ </div>
+ </div>
 
-        <p>
-            Este material utiliza o exemplo de um <strong>aplicativo de delivery de comida</strong>
-            para explicar os conceitos de forma prática.
-        </p>
+ <div class="hero-side">
+ <p class="side-title">Conceitos-chave</p>
+ <ul class="side-list">
+ <li> Jornada do Usuário</li>
+ <li> Service Blueprint</li>
+ <li> Frontstage vs Backstage</li>
+ <li> Linhas de separação</li>
+ <li> Touchpoints</li>
+ <li> Dores e oportunidades</li>
+ </ul>
+ <hr style="border-color:rgba(148,163,184,0.15); margin:0.9rem 0">
+ <p class="side-title">Quando usar</p>
+ <ul class="side-list">
+ <li>Redesign de produto ou serviço</li>
+ <li>Identificação de fricções na experiência</li>
+ <li>Alinhamento entre equipes de produto</li>
+ <li>Documentação de fluxos existentes</li>
+ </ul>
+ </div>
 
-    </section>
+ </div>
 
-    <!-- JORNADA -->
-    <section>
+ <!-- LAYOUT PRINCIPAL -->
 
-        <h2>Jornada do Usuário</h2>
+ <div class="layout">
 
-        <div class="card">
+ <!-- COLUNA ESQUERDA -->
 
-            <p>
-                A Jornada do Usuário representa o caminho percorrido por uma pessoa
-                ao utilizar um sistema.
-            </p>
+ <div>
 
-        </div>
+ <!-- O QUE É A JORNADA -->
+ <div class="content-card">
 
-        <div class="alerta">
-            <strong>Exemplo prático:</strong> Usuário quer pedir comida em um aplicativo.
-        </div>
+ <section>
+ <h2 class="section-title">O que é a Jornada do Usuário?</h2>
+ <p>
+ A Jornada do Usuário (<em>User Journey Map</em>) é uma representação visual
+ que descreve o caminho percorrido por uma pessoa ao interagir com um produto
+ ou serviço digital — do primeiro contato até o objetivo final.
+ </p>
+ <p>
+ Ela captura não apenas as ações, mas também os <strong class="highlight">
+ pensamentos</strong>, <strong class="highlight">emoções</strong> e
+ <strong class="highlight">dores</strong> em cada etapa,
+ revelando onde a experiência falha ou surpreende positivamente.
+ </p>
 
-        <div class="timeline">
+ <div class="example-box" style="margin-top:0.75rem">
+ <p class="example-label">Exemplo prático 1 — Agendamento médico online</p>
+ <p>
+ Uma usuária de 60 anos precisa consultar um especialista.
+ Abaixo, cada etapa mostra sua ação, emoção e onde o sistema pode melhorar.
+ </p>
+ </div>
 
-            <div class="etapa">
-                <h4>Descoberta</h4>
-                <p>Usuário sente fome e decide pedir comida.</p>
-            </div>
+ <div class="journey-steps" style="margin-top:1rem">
 
-            <div class="etapa">
-                <h4>Pesquisa</h4>
-                <p>Abre aplicativos como iFood ou Uber Eats e compara opções.</p>
-            </div>
+ <div class="journey-step">
+ <div class="step-dot">01</div>
+ <div class="step-body">
+ <p class="step-title">Necessidade</p>
+ <p class="step-desc">
+ Sente dor nas costas há dias e decide buscar atendimento.
+ Pede indicação à filha.
+ </p>
+ <span class="step-emotion"> Preocupada, mas esperançosa</span>
+ </div>
+ </div>
 
-            <div class="etapa">
-                <h4>Decisão</h4>
-                <p>Escolhe um restaurante com melhor avaliação e preço.</p>
-            </div>
+ <div class="journey-step">
+ <div class="step-dot">02</div>
+ <div class="step-body">
+ <p class="step-title">Descoberta</p>
+ <p class="step-desc">
+ Acessa o site do hospital via celular. Enfrenta letras pequenas
+ e menu confuso. Leva 4 minutos para encontrar "Agendar Consulta".
+ </p>
+ <span class="step-emotion"> Frustrada com a navegação</span>
+ </div>
+ </div>
 
-            <div class="etapa">
-                <h4>Compra</h4>
-                <p>Seleciona itens e realiza o pagamento no app.</p>
-            </div>
+ <div class="journey-step">
+ <div class="step-dot">03</div>
+ <div class="step-body">
+ <p class="step-title">Seleção</p>
+ <p class="step-desc">
+ Escolhe especialidade e médico. O sistema exibe slots de horário
+ sem distinguir manhã/tarde claramente.
+ </p>
+ <span class="step-emotion"> Confusa com o formato de horário</span>
+ </div>
+ </div>
 
-            <div class="etapa">
-                <h4>Uso</h4>
-                <p>Acompanha a entrega até receber o pedido.</p>
-            </div>
+ <div class="journey-step">
+ <div class="step-dot">04</div>
+ <div class="step-body">
+ <p class="step-title">Confirmação</p>
+ <p class="step-desc">
+ Preenche dados e confirma. Recebe e-mail de confirmação,
+ mas não há SMS nem lembrete pelo app.
+ </p>
+ <span class="step-emotion"> Aliviada, mas insegura se vai esquecer</span>
+ </div>
+ </div>
 
-        </div>
+ <div class="journey-step">
+ <div class="step-dot">05</div>
+ <div class="step-body">
+ <p class="step-title">Dia da consulta</p>
+ <p class="step-desc">
+ Comparece ao hospital. Não lembra o número de confirmação.
+ Precisa de ajuda da recepcionista para localizar o agendamento.
+ </p>
+ <span class="step-emotion"> Ansiosa e envergonhada</span>
+ </div>
+ </div>
 
-    </section>
+ <div class="journey-step">
+ <div class="step-dot">06</div>
+ <div class="step-body">
+ <p class="step-title">Pós-consulta</p>
+ <p class="step-desc">
+ Recebe orientação do médico. Sem funcionalidade de retorno
+ automático no sistema; precisa ligar para agendar novamente.
+ </p>
+ <span class="step-emotion"> Decepcionada com a falta de continuidade</span>
+ </div>
+ </div>
 
-    <!-- SERVICE BLUEPRINT -->
-    <section>
+ </div>
 
-        <h2>Service Blueprint</h2>
+ <div class="note-box" style="margin-top:1rem">
+ <strong>Oportunidades de melhoria identificadas:</strong>
+ <ul style="margin-top:0.4rem; padding-left:1.1rem; font-size:0.86rem; color:#e5e7eb; line-height:1.7">
+ <li>Interface responsiva com fontes maiores para acessibilidade</li>
+ <li>Lembrete por SMS no dia anterior à consulta</li>
+ <li>QR Code ou código visível no app para check-in</li>
+ <li>Fluxo de agendamento de retorno dentro da própria plataforma</li>
+ </ul>
+ </div>
+ </section>
 
-        <div class="card">
+ <!-- SEGUNDO EXEMPLO DE JORNADA -->
+ <section class="section-gap">
+ <h2 class="section-title">Exemplo prático 2 — Abertura de conta bancária digital</h2>
 
-            <p>
-                O Service Blueprint mostra o que acontece por trás da experiência do usuário.
-            </p>
+ <p>
+ Um estudante universitário deseja abrir uma conta digital para receber
+ o pagamento de um estágio. Acompanhe a jornada pelo aplicativo.
+ </p>
 
-        </div>
+ <table class="mini-table" style="margin-top:0.75rem">
+ <thead>
+ <tr>
+ <th>Etapa</th>
+ <th>Ação</th>
+ <th>Emoção</th>
+ <th>Dor / Oportunidade</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Instalação</strong></td>
+ <td>Baixa o app da loja</td>
+ <td> Animado</td>
+ <td>App pesa 120 MB — usuário em 3G abandona</td>
+ </tr>
+ <tr>
+ <td><strong>Cadastro</strong></td>
+ <td>Preenche CPF, nome, e-mail</td>
+ <td> Tranquilo</td>
+ <td>Formulário não valida CPF em tempo real</td>
+ </tr>
+ <tr>
+ <td><strong>Selfie + doc.</strong></td>
+ <td>Fotografa RG e tira selfie</td>
+ <td> Desconfortável</td>
+ <td>Câmera trava em celulares antigos</td>
+ </tr>
+ <tr>
+ <td><strong>Análise</strong></td>
+ <td>Aguarda aprovação (até 24 h)</td>
+ <td> Impaciente</td>
+ <td>Sem notificação de progresso</td>
+ </tr>
+ <tr>
+ <td><strong>Ativação</strong></td>
+ <td>Cria senha e ativa conta</td>
+ <td> Empolgado</td>
+ <td>Ponto positivo: onboarding claro com dicas</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
 
-        <div class="alerta">
-            <strong>Mesmo cenário:</strong> aplicativo de delivery de comida.
-        </div>
+ </div>
 
-        <div class="blueprint-diagram">
+ <!-- SERVICE BLUEPRINT -->
+ <div class="content-card section-gap">
 
-            <!-- USER -->
-            <div class="layer user">
-                <h4>Usuário</h4>
-                <div class="cells">
-                    <div>Abre app e escolhe restaurante</div>
-                    <div>Seleciona prato e paga</div>
-                    <div>Aguarda entrega</div>
-                </div>
-            </div>
+ <section>
+ <h2 class="section-title">O que é o Service Blueprint?</h2>
+ <p>
+ O Service Blueprint é um diagrama que expande a Jornada do Usuário para
+ revelar também os processos internos que tornam cada etapa possível.
+ Ele é dividido em camadas separadas por <strong class="highlight">linhas de separação</strong>.
+ </p>
+ <p>
+ A grande diferença: enquanto a Jornada captura
+ <em>"como o usuário vive a experiência"</em>, o Blueprint responde também
+ <em>"o que acontece nos bastidores para que isso ocorra"</em>.
+ </p>
 
-            <div class="line interaction">
-                <span>Interaction Line</span>
-            </div>
+ <table class="mini-table">
+ <thead>
+ <tr>
+ <th>Linha de separação</th>
+ <th>O que divide</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Interaction Line</strong></td>
+ <td>Usuário ↔ Frontstage (contato direto com o sistema)</td>
+ </tr>
+ <tr>
+ <td><strong>Line of Visibility</strong></td>
+ <td>Frontstage ↔ Backstage (o que é visível vs. oculto ao usuário)</td>
+ </tr>
+ <tr>
+ <td><strong>Internal Interaction</strong></td>
+ <td>Backstage ↔ Suporte (sistemas e infraestrutura)</td>
+ </tr>
+ </tbody>
+ </table>
 
-            <!-- FRONTSTAGE -->
-            <div class="layer frontstage">
-                <h4>Frontstage (o que o usuário vê)</h4>
-                <div class="cells">
-                    <div>Interface mostra restaurantes</div>
-                    <div>Confirma pedido e pagamento</div>
-                    <div>Exibe status da entrega</div>
-                </div>
-            </div>
+ </section>
 
-            <div class="line visibility">
-                <span>Line of Visibility</span>
-            </div>
+ <!-- BLUEPRINT EXEMPLO 1 -->
+ <section class="section-gap">
+ <h2 class="section-title">Blueprint — Agendamento médico online</h2>
+ <p>
+ Mesmo cenário da jornada anterior. O Blueprint agora mostra
+ o que cada camada faz em três momentos-chave.
+ </p>
 
-            <!-- BACKSTAGE -->
-            <div class="layer backstage">
-                <h4>Backstage (bastidores)</h4>
-                <div class="cells">
-                    <div>Restaurante recebe pedido</div>
-                    <div>Sistema processa pagamento</div>
-                    <div>Entregador é acionado</div>
-                </div>
-            </div>
+ <div class="blueprint-layers">
 
-            <!-- SUPPORT -->
-            <div class="layer support">
-                <h4>Suporte (sistemas)</h4>
-                <div class="cells">
-                    <div>Banco de dados registra pedido</div>
-                    <div>API de pagamento valida transação</div>
-                    <div>Sistema de GPS rastreia entrega</div>
-                </div>
-            </div>
+ <!-- USUÁRIO -->
+ <div class="bp-layer user-layer">
+ <p class="bp-layer-title"> Usuário</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Pesquisa e acessa</strong>
+ Busca médico no site do hospital via celular.
+ </div>
+ <div class="bp-cell">
+ <strong>Seleciona e agenda</strong>
+ Escolhe horário e preenche dados pessoais.
+ </div>
+ <div class="bp-cell">
+ <strong>Comparece</strong>
+ Apresenta-se na recepção no dia marcado.
+ </div>
+ </div>
+ </div>
 
-        </div>
+ <div class="bp-divider interaction">
+ <span>Interaction Line — contato direto com o sistema</span>
+ </div>
 
-    </section>
+ <!-- FRONTSTAGE -->
+ <div class="bp-layer front-layer">
+ <p class="bp-layer-title"> Frontstage (visível ao usuário)</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Interface do site</strong>
+ Lista de especialidades, filtro por plano de saúde, buscador de médico.
+ </div>
+ <div class="bp-cell">
+ <strong>Formulário e confirmação</strong>
+ Formulário com validação, e-mail automático de confirmação.
+ </div>
+ <div class="bp-cell">
+ <strong>Terminal de check-in</strong>
+ Totem de autoatendimento ou atendente na recepção.
+ </div>
+ </div>
+ </div>
 
-    <!-- COMPARAÇÃO -->
-    <section>
+ <div class="bp-divider visibility">
+ <span>Line of Visibility — início dos bastidores</span>
+ </div>
 
-        <h2>Comparação</h2>
+ <!-- BACKSTAGE -->
+ <div class="bp-layer back-layer">
+ <p class="bp-layer-title"> Backstage (invisível ao usuário)</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Agenda do médico</strong>
+ Sistema bloqueia slots já ocupados em tempo real e sincroniza entre unidades.
+ </div>
+ <div class="bp-cell">
+ <strong>Verificação de convênio</strong>
+ API do plano de saúde valida cobertura antes de confirmar o agendamento.
+ </div>
+ <div class="bp-cell">
+ <strong>Notificação interna</strong>
+ Alerta enviado à equipe da recepção com lista de pacientes do dia.
+ </div>
+ </div>
+ </div>
 
-        <div class="card">
+ <div class="bp-divider internal">
+ <span>Internal Interaction — infraestrutura de suporte</span>
+ </div>
 
-            <p>
-                A Jornada do Usuário foca na experiência percebida.
-                O Service Blueprint mostra também os processos internos.
-            </p>
+ <!-- SUPORTE -->
+ <div class="bp-layer support-layer">
+ <p class="bp-layer-title"> Suporte (sistemas e infraestrutura)</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Banco de dados</strong>
+ Armazena médicos, horários, pacientes e histórico de consultas.
+ </div>
+ <div class="bp-cell">
+ <strong>Servidor de e-mail / SMS</strong>
+ Dispara confirmação e lembrete 24 h antes via gateway de mensagens.
+ </div>
+ <div class="bp-cell">
+ <strong>Sistema de prontuário</strong>
+ Vincula o agendamento ao prontuário eletrônico do paciente (PEP).
+ </div>
+ </div>
+ </div>
 
-        </div>
+ </div>
+ </section>
 
-    </section>
+ <!-- BLUEPRINT EXEMPLO 2 -->
+ <section class="section-gap">
+ <h2 class="section-title">Blueprint — Conta bancária digital</h2>
+ <p>
+ O mesmo fluxo de abertura de conta, agora mapeado pelas camadas do Blueprint.
+ </p>
 
-    <!-- CONCLUSÃO -->
-    <section class="card">
+ <div class="blueprint-layers">
 
-        <h2>Conclusão</h2>
+ <div class="bp-layer user-layer">
+ <p class="bp-layer-title"> Usuário</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Instala e cadastra</strong>
+ Baixa o app, preenche dados e envia documentos pela câmera.
+ </div>
+ <div class="bp-cell">
+ <strong>Aguarda análise</strong>
+ Fica sem feedback claro por até 24 horas.
+ </div>
+ <div class="bp-cell">
+ <strong>Ativa conta</strong>
+ Cria senha, explora o app e realiza a primeira transação.
+ </div>
+ </div>
+ </div>
 
-        <p>
-            O uso conjunto dessas técnicas permite entender tanto o comportamento do usuário
-            quanto a estrutura necessária para entregar a experiência.
-        </p>
+ <div class="bp-divider interaction">
+ <span>Interaction Line</span>
+ </div>
 
-    </section>
+ <div class="bp-layer front-layer">
+ <p class="bp-layer-title"> Frontstage</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Telas de onboarding</strong>
+ Formulário guiado, câmera nativa para OCR do documento.
+ </div>
+ <div class="bp-cell">
+ <strong>Tela de "em análise"</strong>
+ Mensagem genérica — falta barra de progresso ou estimativa de tempo.
+ </div>
+ <div class="bp-cell">
+ <strong>Tela de boas-vindas</strong>
+ Tutorial interativo com dicas de segurança e limite inicial.
+ </div>
+ </div>
+ </div>
+
+ <div class="bp-divider visibility">
+ <span>Line of Visibility</span>
+ </div>
+
+ <div class="bp-layer back-layer">
+ <p class="bp-layer-title"> Backstage</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>Motor de OCR</strong>
+ Extrai dados do documento e compara com base da Receita Federal.
+ </div>
+ <div class="bp-cell">
+ <strong>Análise de risco</strong>
+ Algoritmo de compliance verifica listas de restrição e score de crédito.
+ </div>
+ <div class="bp-cell">
+ <strong>Provisionamento de conta</strong>
+ Gera número de conta, agência virtual e chave PIX automática.
+ </div>
+ </div>
+ </div>
+
+ <div class="bp-divider internal">
+ <span>Internal Interaction</span>
+ </div>
+
+ <div class="bp-layer support-layer">
+ <p class="bp-layer-title"> Suporte</p>
+ <div class="bp-cells">
+ <div class="bp-cell">
+ <strong>API do Banco Central</strong>
+ Registro no DICT (diretório do PIX) e consulta de dados do CPF.
+ </div>
+ <div class="bp-cell">
+ <strong>Serasa / Boa Vista</strong>
+ Consulta automatizada de score e restrições do solicitante.
+ </div>
+ <div class="bp-cell">
+ <strong>Core bancário</strong>
+ Sistema central registra a conta, define limites e libera o dashboard.
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </section>
+
+ </div>
+
+ <!-- COMPARAÇÃO -->
+ <div class="content-card section-gap">
+
+ <section>
+ <h2 class="section-title">Jornada vs Blueprint — quando usar cada um</h2>
+ <p>
+ As duas ferramentas se complementam. A escolha depende do que você precisa enxergar.
+ </p>
+
+ <div class="compare-grid">
+ <div class="compare-col col-journey">
+ <h5> Jornada do Usuário</h5>
+ <ul>
+ <li>Foco na perspectiva do usuário</li>
+ <li>Captura emoções e percepções</li>
+ <li>Ideal para identificar dores e fricções</li>
+ <li>Útil em etapas iniciais de pesquisa</li>
+ <li>Comunicação com stakeholders não técnicos</li>
+ </ul>
+ </div>
+ <div class="compare-col col-blueprint">
+ <h5> Service Blueprint</h5>
+ <ul>
+ <li>Foco em processos e sistemas</li>
+ <li>Revela dependências e gargalos técnicos</li>
+ <li>Ideal para redesign de serviços complexos</li>
+ <li>Útil para alinhar equipes de produto e TI</li>
+ <li>Apoia decisões de arquitetura de sistema</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ </div>
+
+ <!-- ATIVIDADE -->
+ <div class="content-card section-gap">
+
+ <section>
+ <h2 class="section-title">Atividade de aula</h2>
+
+ <div class="activity-box">
+ <p class="activity-title">Mapeie a experiência de um serviço digital real</p>
+ <p style="font-size:0.87rem; color:#9ca3af">
+ Escolha um serviço que você usa com frequência (transporte, streaming,
+ compras, saúde) e mapeie sua própria jornada + blueprint.
+ </p>
+ </div>
+
+ <div class="activity-steps">
+
+ <div class="act-step">
+ <div class="act-num">1</div>
+ <p class="act-text">
+ <strong>Defina o cenário:</strong> escolha um serviço e um objetivo
+ específico do usuário (ex.: "cancelar assinatura do streaming").
+ </p>
+ </div>
+
+ <div class="act-step">
+ <div class="act-num">2</div>
+ <p class="act-text">
+ <strong>Mapeie a Jornada:</strong> liste de 4 a 6 etapas com ação,
+ emoção e uma dor ou ponto positivo em cada uma.
+ </p>
+ </div>
+
+ <div class="act-step">
+ <div class="act-num">3</div>
+ <p class="act-text">
+ <strong>Construa o Blueprint:</strong> para cada etapa, identifique
+ o que acontece no Frontstage, Backstage e no Suporte.
+ </p>
+ </div>
+
+ <div class="act-step">
+ <div class="act-num">4</div>
+ <p class="act-text">
+ <strong>Identifique oportunidades:</strong> aponte pelo menos dois
+ pontos de melhoria descobertos pelo cruzamento das duas ferramentas.
+ </p>
+ </div>
+
+ <div class="act-step">
+ <div class="act-num">5</div>
+ <p class="act-text">
+ <strong>Apresente:</strong> compartilhe com a turma e discuta
+ quais camadas do Blueprint explicam as dores encontradas na Jornada.
+ </p>
+ </div>
+
+ </div>
+ </section>
+
+ </div>
+
+ </div>
+
+ <!-- COLUNA DIREITA (MATERIAIS) -->
+
+ <div>
+ <div class="materials-card" style="position:sticky; top:1.5rem">
+
+ <div>
+ <p class="side-title">Materiais de estudo</p>
+ <ul class="resource-list">
+ <li>
+ <strong>Artigo fundador</strong><br>
+ <a href="https://hbr.org/1984/01/designing-services-that-deliver" target="_blank">
+ "Designing Services That Deliver" – Lynn Shostack, HBR (1984)
+ </a>
+ </li>
+ <li>
+ <strong>Guia NN/g</strong><br>
+ <a href="https://www.nngroup.com/articles/service-blueprints-definition/" target="_blank">
+ Service Blueprints: Definition – Nielsen Norman Group
+ </a>
+ </li>
+ <li>
+ <strong>Guia NN/g</strong><br>
+ <a href="https://www.nngroup.com/articles/journey-mapping-101/" target="_blank">
+ Journey Mapping 101 – Nielsen Norman Group
+ </a>
+ </li>
+ <li>
+ <strong>Vídeo</strong><br>
+ <a href="https://www.youtube.com/watch?v=mSxpVRo3BLg" target="_blank">
+ Service Blueprint Explained – Practical UX Skills
+ </a>
+ </li>
+ <li>
+ <strong>Template gratuito</strong><br>
+ <a href="https://www.figma.com/community/file/842597798657480316" target="_blank">
+ User Journey Map – Figma Community
+ </a>
+ </li>
+ </ul>
+ </div>
+
+ <hr style="border-color:rgba(148,163,184,0.15)">
+
+ <div>
+ <p class="side-title">Ferramentas para criar</p>
+ <div class="tag-list">
+ <span class="tag">Figma</span>
+ <span class="tag">Miro</span>
+ <span class="tag">Mural</span>
+ <span class="tag">Notion</span>
+ <span class="tag">FigJam</span>
+ <span class="tag">Lucidchart</span>
+ </div>
+ </div>
+
+ <hr style="border-color:rgba(148,163,184,0.15)">
+
+ <div>
+ <p class="side-title">Conceitos relacionados</p>
+ <ul class="resource-list">
+ <li><a href="#">Personas</a></li>
+ <li><a href="#">Avaliação Heurística</a></li>
+ <li><a href="#">Design Thinking</a></li>
+ <li><a href="#">Prototipagem</a></li>
+ <li><a href="#">Teste de Usabilidade</a></li>
+ </ul>
+ </div>
+
+ <hr style="border-color:rgba(148,163,184,0.15)">
+
+ <p style="font-size:0.75rem; color:rgba(156,163,175,0.6)">
+ Atualizado · 2026
+ </p>
+
+ </div>
+ </div>
+
+ </div>
 
 </div>
+
+<footer>
+ <div style="max-width:1040px; margin:0 auto; padding:0 1.25rem">
+ Interação Humano-Computador · Material de estudo
+ </div>
+</footer>
 
 </body>
 </html>
