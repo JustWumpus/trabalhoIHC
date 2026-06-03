@@ -12,14 +12,14 @@
 
     <style>
 
-        /* CENTRALIZAÇÃO GERAL */
+        /* CONTAINER CENTRAL */
         .container {
             max-width: 1050px;
             margin: 0 auto;
             padding: 2rem 1.2rem;
         }
 
-        /* CARDS NO PADRÃO DA DISCIPLINA */
+        /* CARDS */
         .card {
             margin: 1.5rem 0;
             padding: 1.5rem;
@@ -28,7 +28,7 @@
             background: rgba(255, 255, 255, 0.03);
         }
 
-        /* DESTAQUE */
+        /* ALERTAS */
         .alerta {
             padding: 1rem 1.2rem;
             margin: 1.5rem 0;
@@ -37,7 +37,7 @@
             border-radius: 10px;
         }
 
-        /* TIMELINE (JORNADA) */
+        /* TIMELINE */
         .timeline {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -56,38 +56,83 @@
             margin-top: 0;
         }
 
-        /* BLUEPRINT */
-        .blueprint {
+        /* =========================
+           SERVICE BLUEPRINT REAL UX
+           ========================= */
+
+        .blueprint-diagram {
             margin-top: 2rem;
-            overflow-x: auto;
         }
 
-        .linha {
+        .layer {
+            margin-bottom: 1rem;
+        }
+
+        .layer h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .cells {
             display: grid;
-            grid-template-columns: 180px repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-bottom: 10px;
         }
 
-        .linha strong,
-        .linha span {
+        .cells div {
             padding: 12px;
             border-radius: 10px;
             border: 1px solid rgba(120, 140, 180, 0.25);
+            background: rgba(255, 255, 255, 0.04);
             font-size: 0.9rem;
         }
 
-        /* CORES SUAVES (ESTILO DA DISCIPLINA) */
-        .usuario span { background: rgba(46, 204, 113, 0.08); }
-        .frontstage span { background: rgba(52, 152, 219, 0.08); }
-        .backstage span { background: rgba(241, 196, 15, 0.08); }
-        .suporte span { background: rgba(155, 89, 182, 0.08); }
+        /* LINHA DE INTERAÇÃO */
+        .line {
+            position: relative;
+            text-align: center;
+            margin: 15px 0;
+        }
 
-        /* TABELA COMPARATIVA */
+        .line span {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .interaction::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-top: 2px dashed #4da3ff;
+            z-index: 1;
+        }
+
+        .visibility::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-top: 2px dashed #ffb74d;
+            z-index: 1;
+        }
+
+        /* CORES DAS CAMADAS */
+        .user h4 { color: #2ecc71; }
+        .frontstage h4 { color: #3498db; }
+        .backstage h4 { color: #f1c40f; }
+        .support h4 { color: #9b59b6; }
+
+        /* COMPARAÇÃO */
         .comparacao {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
         }
 
         .comparacao th,
@@ -113,14 +158,14 @@
         <p>Interação Humano-Computador (IHC)</p>
     </header>
 
-    <!-- INTRODUÇÃO -->
+    <!-- INTRO -->
     <section class="card">
 
         <h2>Introdução</h2>
 
         <p>
-            A Jornada do Usuário e o Service Blueprint são ferramentas utilizadas em IHC
-            para compreender e projetar experiências digitais centradas no usuário.
+            A Jornada do Usuário e o Service Blueprint são técnicas utilizadas em IHC
+            para modelar e compreender experiências de usuários em sistemas digitais.
         </p>
 
     </section>
@@ -140,7 +185,7 @@
         </div>
 
         <div class="alerta">
-            Permite identificar dores, emoções e oportunidades de melhoria na experiência.
+            Permite identificar emoções, dificuldades e oportunidades de melhoria na experiência.
         </div>
 
         <div class="timeline">
@@ -175,46 +220,66 @@
         <h2>Service Blueprint</h2>
 
         <div class="card">
-
             <p>
-                Representa não apenas a experiência do usuário, mas também todos os processos
-                internos necessários para que o serviço funcione corretamente.
+                Representa não apenas o que o usuário vê, mas também os processos internos
+                necessários para entregar o serviço.
             </p>
-
         </div>
 
         <div class="alerta">
-            Mostra a relação entre o que o usuário vê e o que acontece nos bastidores.
+            Mostra a relação entre experiência do usuário e operação interna do sistema.
         </div>
 
-        <div class="blueprint">
+        <div class="blueprint-diagram">
 
-            <div class="linha usuario">
-                <strong>Usuário</strong>
-                <span>Escolhe serviço</span>
-                <span>Realiza ação</span>
-                <span>Recebe resultado</span>
+            <!-- USUÁRIO -->
+            <div class="layer user">
+                <h4>Usuário</h4>
+                <div class="cells">
+                    <div>Escolhe restaurante</div>
+                    <div>Seleciona pedido</div>
+                    <div>Finaliza pagamento</div>
+                </div>
             </div>
 
-            <div class="linha frontstage">
-                <strong>Frontstage</strong>
-                <span>Interface do sistema</span>
-                <span>Confirmação</span>
-                <span>Feedback</span>
+            <!-- INTERACTION LINE -->
+            <div class="line interaction">
+                <span>Interaction Line</span>
             </div>
 
-            <div class="linha backstage">
-                <strong>Backstage</strong>
-                <span>Processamento</span>
-                <span>Validação</span>
-                <span>Execução</span>
+            <!-- FRONTSTAGE -->
+            <div class="layer frontstage">
+                <h4>Frontstage (Interface visível)</h4>
+                <div class="cells">
+                    <div>App exibe opções</div>
+                    <div>Confirma pedido</div>
+                    <div>Mostra status</div>
+                </div>
             </div>
 
-            <div class="linha suporte">
-                <strong>Suporte</strong>
-                <span>Banco de dados</span>
-                <span>APIs</span>
-                <span>Infraestrutura</span>
+            <!-- VISIBILITY LINE -->
+            <div class="line visibility">
+                <span>Line of Visibility</span>
+            </div>
+
+            <!-- BACKSTAGE -->
+            <div class="layer backstage">
+                <h4>Backstage (Processos internos)</h4>
+                <div class="cells">
+                    <div>Recebe pedido</div>
+                    <div>Processa pagamento</div>
+                    <div>Aciona restaurante</div>
+                </div>
+            </div>
+
+            <!-- SUPORTE -->
+            <div class="layer support">
+                <h4>Suporte</h4>
+                <div class="cells">
+                    <div>Banco de dados</div>
+                    <div>API de pagamento</div>
+                    <div>Sistema de entrega</div>
+                </div>
             </div>
 
         </div>
@@ -235,7 +300,7 @@
 
             <tr>
                 <td>Foco na experiência do usuário</td>
-                <td>Foco também nos processos internos</td>
+                <td>Inclui processos internos</td>
             </tr>
 
             <tr>
@@ -258,9 +323,9 @@
         <h2>Conclusão</h2>
 
         <p>
-            Essas duas técnicas são complementares e fundamentais em IHC,
-            permitindo compreender tanto a experiência do usuário quanto
-            os processos internos de um sistema.
+            Ambas as técnicas são complementares e fundamentais em IHC,
+            permitindo entender tanto a experiência do usuário quanto os
+            bastidores de um sistema.
         </p>
 
     </section>
