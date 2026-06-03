@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jornada do Usuário e Service Blueprint</title>
 
-    <!-- CSS da disciplina -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
 
     <style>
 
-        /* CONTAINER CENTRAL */
         .container {
             max-width: 1050px;
             margin: 0 auto;
             padding: 2rem 1.2rem;
         }
 
-        /* CARDS */
         .card {
             margin: 1.5rem 0;
             padding: 1.5rem;
@@ -28,7 +25,6 @@
             background: rgba(255, 255, 255, 0.03);
         }
 
-        /* ALERTAS */
         .alerta {
             padding: 1rem 1.2rem;
             margin: 1.5rem 0;
@@ -37,7 +33,6 @@
             border-radius: 10px;
         }
 
-        /* TIMELINE */
         .timeline {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -52,14 +47,7 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
-        .etapa h4 {
-            margin-top: 0;
-        }
-
-        /* =========================
-           SERVICE BLUEPRINT REAL UX
-           ========================= */
-
+        /* BLUEPRINT */
         .blueprint-diagram {
             margin-top: 2rem;
         }
@@ -86,7 +74,6 @@
             font-size: 0.9rem;
         }
 
-        /* LINHA DE INTERAÇÃO */
         .line {
             position: relative;
             text-align: center;
@@ -99,8 +86,6 @@
             font-size: 0.75rem;
             background: #0f172a;
             border: 1px solid rgba(255,255,255,0.15);
-            position: relative;
-            z-index: 2;
         }
 
         .interaction::before {
@@ -110,7 +95,6 @@
             left: 0;
             right: 0;
             border-top: 2px dashed #4da3ff;
-            z-index: 1;
         }
 
         .visibility::before {
@@ -120,30 +104,12 @@
             left: 0;
             right: 0;
             border-top: 2px dashed #ffb74d;
-            z-index: 1;
         }
 
-        /* CORES DAS CAMADAS */
         .user h4 { color: #2ecc71; }
         .frontstage h4 { color: #3498db; }
         .backstage h4 { color: #f1c40f; }
         .support h4 { color: #9b59b6; }
-
-        /* COMPARAÇÃO */
-        .comparacao {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .comparacao th,
-        .comparacao td {
-            padding: 12px;
-            border: 1px solid rgba(120, 140, 180, 0.25);
-        }
-
-        .comparacao th {
-            background: rgba(77, 163, 255, 0.15);
-        }
 
     </style>
 
@@ -164,8 +130,13 @@
         <h2>Introdução</h2>
 
         <p>
-            A Jornada do Usuário e o Service Blueprint são técnicas utilizadas em IHC
-            para modelar e compreender experiências de usuários em sistemas digitais.
+            Em IHC, compreender como o usuário interage com sistemas digitais
+            é essencial para projetar boas experiências.
+        </p>
+
+        <p>
+            Este material utiliza o exemplo de um <strong>aplicativo de delivery de comida</strong>
+            para explicar os conceitos de forma prática.
         </p>
 
     </section>
@@ -178,36 +149,41 @@
         <div class="card">
 
             <p>
-                Representa as etapas percorridas por um usuário ao interagir com um sistema,
-                desde a descoberta até a conclusão de um objetivo.
+                A Jornada do Usuário representa o caminho percorrido por uma pessoa
+                ao utilizar um sistema.
             </p>
 
         </div>
 
         <div class="alerta">
-            Permite identificar emoções, dificuldades e oportunidades de melhoria na experiência.
+            <strong>Exemplo prático:</strong> Usuário quer pedir comida em um aplicativo.
         </div>
 
         <div class="timeline">
 
             <div class="etapa">
                 <h4>Descoberta</h4>
-                <p>Usuário identifica uma necessidade.</p>
+                <p>Usuário sente fome e decide pedir comida.</p>
             </div>
 
             <div class="etapa">
                 <h4>Pesquisa</h4>
-                <p>Busca soluções disponíveis.</p>
+                <p>Abre aplicativos como iFood ou Uber Eats e compara opções.</p>
             </div>
 
             <div class="etapa">
                 <h4>Decisão</h4>
-                <p>Escolhe a melhor opção.</p>
+                <p>Escolhe um restaurante com melhor avaliação e preço.</p>
+            </div>
+
+            <div class="etapa">
+                <h4>Compra</h4>
+                <p>Seleciona itens e realiza o pagamento no app.</p>
             </div>
 
             <div class="etapa">
                 <h4>Uso</h4>
-                <p>Utiliza o sistema ou serviço.</p>
+                <p>Acompanha a entrega até receber o pedido.</p>
             </div>
 
         </div>
@@ -220,65 +196,64 @@
         <h2>Service Blueprint</h2>
 
         <div class="card">
+
             <p>
-                Representa não apenas o que o usuário vê, mas também os processos internos
-                necessários para entregar o serviço.
+                O Service Blueprint mostra o que acontece por trás da experiência do usuário.
             </p>
+
         </div>
 
         <div class="alerta">
-            Mostra a relação entre experiência do usuário e operação interna do sistema.
+            <strong>Mesmo cenário:</strong> aplicativo de delivery de comida.
         </div>
 
         <div class="blueprint-diagram">
 
-            <!-- USUÁRIO -->
+            <!-- USER -->
             <div class="layer user">
                 <h4>Usuário</h4>
                 <div class="cells">
-                    <div>Escolhe restaurante</div>
-                    <div>Seleciona pedido</div>
-                    <div>Finaliza pagamento</div>
+                    <div>Abre app e escolhe restaurante</div>
+                    <div>Seleciona prato e paga</div>
+                    <div>Aguarda entrega</div>
                 </div>
             </div>
 
-            <!-- INTERACTION LINE -->
             <div class="line interaction">
                 <span>Interaction Line</span>
             </div>
 
             <!-- FRONTSTAGE -->
             <div class="layer frontstage">
-                <h4>Frontstage (Interface visível)</h4>
+                <h4>Frontstage (o que o usuário vê)</h4>
                 <div class="cells">
-                    <div>App exibe opções</div>
-                    <div>Confirma pedido</div>
-                    <div>Mostra status</div>
+                    <div>Interface mostra restaurantes</div>
+                    <div>Confirma pedido e pagamento</div>
+                    <div>Exibe status da entrega</div>
                 </div>
             </div>
 
-            <!-- VISIBILITY LINE -->
             <div class="line visibility">
                 <span>Line of Visibility</span>
             </div>
 
             <!-- BACKSTAGE -->
             <div class="layer backstage">
-                <h4>Backstage (Processos internos)</h4>
+                <h4>Backstage (bastidores)</h4>
                 <div class="cells">
-                    <div>Recebe pedido</div>
-                    <div>Processa pagamento</div>
-                    <div>Aciona restaurante</div>
+                    <div>Restaurante recebe pedido</div>
+                    <div>Sistema processa pagamento</div>
+                    <div>Entregador é acionado</div>
                 </div>
             </div>
 
-            <!-- SUPORTE -->
+            <!-- SUPPORT -->
             <div class="layer support">
-                <h4>Suporte</h4>
+                <h4>Suporte (sistemas)</h4>
                 <div class="cells">
-                    <div>Banco de dados</div>
-                    <div>API de pagamento</div>
-                    <div>Sistema de entrega</div>
+                    <div>Banco de dados registra pedido</div>
+                    <div>API de pagamento valida transação</div>
+                    <div>Sistema de GPS rastreia entrega</div>
                 </div>
             </div>
 
@@ -291,29 +266,14 @@
 
         <h2>Comparação</h2>
 
-        <table class="comparacao">
+        <div class="card">
 
-            <tr>
-                <th>Jornada do Usuário</th>
-                <th>Service Blueprint</th>
-            </tr>
+            <p>
+                A Jornada do Usuário foca na experiência percebida.
+                O Service Blueprint mostra também os processos internos.
+            </p>
 
-            <tr>
-                <td>Foco na experiência do usuário</td>
-                <td>Inclui processos internos</td>
-            </tr>
-
-            <tr>
-                <td>Visão externa</td>
-                <td>Visão externa e interna</td>
-            </tr>
-
-            <tr>
-                <td>Mais simples</td>
-                <td>Mais detalhado</td>
-            </tr>
-
-        </table>
+        </div>
 
     </section>
 
@@ -323,9 +283,8 @@
         <h2>Conclusão</h2>
 
         <p>
-            Ambas as técnicas são complementares e fundamentais em IHC,
-            permitindo entender tanto a experiência do usuário quanto os
-            bastidores de um sistema.
+            O uso conjunto dessas técnicas permite entender tanto o comportamento do usuário
+            quanto a estrutura necessária para entregar a experiência.
         </p>
 
     </section>
