@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -7,405 +6,266 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jornada do Usuário e Service Blueprint</title>
 
-```
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
+    <!-- CSS da disciplina -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
 
-<style>
+    <style>
 
-    .card {
-        margin: 1.5rem 0;
-        padding: 1.5rem;
-        border-radius: 12px;
-        border-left: 6px solid var(--cor-primaria);
-        background: var(--cor-fundo-secundario);
-    }
+        /* CENTRALIZAÇÃO GERAL */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem;
+        }
 
-    .alerta {
-        padding: 1rem;
-        margin: 1.5rem 0;
-        border-left: 6px solid var(--cor-secundaria);
-        background: rgba(255, 193, 7, 0.1);
-    }
+        /* CARDS NO PADRÃO DA DISCIPLINA */
+        .card {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 14px;
+            border: 1px solid rgba(120, 140, 180, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+        }
 
-    .timeline {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-        margin: 2rem 0;
-    }
+        /* DESTAQUE */
+        .alerta {
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid #4da3ff;
+            background: rgba(77, 163, 255, 0.08);
+            border-radius: 10px;
+        }
 
-    .etapa {
-        padding: 1rem;
-        border: 1px solid var(--cor-borda);
-        border-radius: 10px;
-        text-align: center;
-        background: white;
-    }
+        /* TIMELINE (JORNADA) */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
 
-    .etapa h4 {
-        margin-top: 0;
-    }
+        .etapa {
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(120, 140, 180, 0.25);
+            background: rgba(255, 255, 255, 0.04);
+        }
 
-    .blueprint {
-        margin-top: 2rem;
-        overflow-x: auto;
-    }
+        .etapa h4 {
+            margin-top: 0;
+        }
 
-    .linha {
-        display: grid;
-        grid-template-columns: 180px repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 10px;
-    }
+        /* BLUEPRINT */
+        .blueprint {
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
 
-    .linha strong,
-    .linha span {
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid var(--cor-borda);
-    }
+        .linha {
+            display: grid;
+            grid-template-columns: 180px repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-    .usuario span {
-        background: #e8f5e9;
-    }
+        .linha strong,
+        .linha span {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(120, 140, 180, 0.25);
+            font-size: 0.9rem;
+        }
 
-    .frontstage span {
-        background: #e3f2fd;
-    }
+        /* CORES SUAVES (ESTILO DA DISCIPLINA) */
+        .usuario span { background: rgba(46, 204, 113, 0.08); }
+        .frontstage span { background: rgba(52, 152, 219, 0.08); }
+        .backstage span { background: rgba(241, 196, 15, 0.08); }
+        .suporte span { background: rgba(155, 89, 182, 0.08); }
 
-    .backstage span {
-        background: #fff3e0;
-    }
+        /* TABELA COMPARATIVA */
+        .comparacao {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
 
-    .suporte span {
-        background: #f3e5f5;
-    }
+        .comparacao th,
+        .comparacao td {
+            padding: 12px;
+            border: 1px solid rgba(120, 140, 180, 0.25);
+        }
 
-    .comparacao {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        .comparacao th {
+            background: rgba(77, 163, 255, 0.15);
+        }
 
-    .comparacao th,
-    .comparacao td {
-        padding: 12px;
-        border: 1px solid var(--cor-borda);
-    }
-
-    .comparacao th {
-        background: var(--cor-primaria);
-        color: white;
-    }
-
-</style>
-```
+    </style>
 
 </head>
 
 <body>
 
-<header>
+<div class="container">
 
-```
-<h1>Jornada do Usuário e Service Blueprint</h1>
+    <header>
+        <h1>Jornada do Usuário e Service Blueprint</h1>
+        <p>Interação Humano-Computador (IHC)</p>
+    </header>
 
-<p>
-    Disciplina: Interação Humano-Computador (IHC)
-</p>
-```
+    <!-- INTRODUÇÃO -->
+    <section class="card">
 
-</header>
+        <h2>Introdução</h2>
 
-<section>
+        <p>
+            A Jornada do Usuário e o Service Blueprint são ferramentas utilizadas em IHC
+            para compreender e projetar experiências digitais centradas no usuário.
+        </p>
 
-```
-<h2>Introdução</h2>
+    </section>
 
-<p>
-    Em projetos de Interação Humano-Computador (IHC), compreender como os usuários
-    interagem com sistemas é fundamental para criar experiências eficientes,
-    intuitivas e satisfatórias.
-</p>
+    <!-- JORNADA -->
+    <section>
 
-<p>
-    Duas técnicas amplamente utilizadas para esse propósito são a Jornada do Usuário
-    (User Journey) e o Service Blueprint.
-</p>
-```
+        <h2>Jornada do Usuário</h2>
 
-</section>
+        <div class="card">
 
-<section>
+            <p>
+                Representa as etapas percorridas por um usuário ao interagir com um sistema,
+                desde a descoberta até a conclusão de um objetivo.
+            </p>
 
-```
-<h2>O que é Jornada do Usuário?</h2>
+        </div>
 
-<div class="card">
+        <div class="alerta">
+            Permite identificar dores, emoções e oportunidades de melhoria na experiência.
+        </div>
 
-    <p>
-        A Jornada do Usuário representa todas as etapas percorridas por uma pessoa
-        ao tentar alcançar um objetivo utilizando um produto, sistema ou serviço.
-    </p>
+        <div class="timeline">
 
-    <p>
-        Ela permite identificar ações, expectativas, emoções, dificuldades e
-        oportunidades de melhoria ao longo da experiência.
-    </p>
+            <div class="etapa">
+                <h4>Descoberta</h4>
+                <p>Usuário identifica uma necessidade.</p>
+            </div>
 
-</div>
+            <div class="etapa">
+                <h4>Pesquisa</h4>
+                <p>Busca soluções disponíveis.</p>
+            </div>
 
-<div class="alerta">
+            <div class="etapa">
+                <h4>Decisão</h4>
+                <p>Escolhe a melhor opção.</p>
+            </div>
 
-    <strong>Objetivo:</strong>
+            <div class="etapa">
+                <h4>Uso</h4>
+                <p>Utiliza o sistema ou serviço.</p>
+            </div>
 
-    compreender a experiência do usuário sob sua própria perspectiva.
+        </div>
 
-</div>
+    </section>
 
-<h3>Elementos da Jornada</h3>
+    <!-- SERVICE BLUEPRINT -->
+    <section>
 
-<ul>
-    <li>Ações realizadas pelo usuário.</li>
-    <li>Pontos de contato com o sistema.</li>
-    <li>Objetivos e necessidades.</li>
-    <li>Sentimentos e percepções.</li>
-    <li>Problemas encontrados.</li>
-    <li>Oportunidades de melhoria.</li>
-</ul>
-```
+        <h2>Service Blueprint</h2>
 
-</section>
+        <div class="card">
 
-<section>
+            <p>
+                Representa não apenas a experiência do usuário, mas também todos os processos
+                internos necessários para que o serviço funcione corretamente.
+            </p>
 
-```
-<h2>Exemplo Prático</h2>
+        </div>
 
-<h3>Compra de ingresso de cinema online</h3>
+        <div class="alerta">
+            Mostra a relação entre o que o usuário vê e o que acontece nos bastidores.
+        </div>
 
-<div class="timeline">
+        <div class="blueprint">
 
-    <div class="etapa">
-        <h4>1. Descoberta</h4>
-        <p>O usuário decide assistir a um filme.</p>
-    </div>
+            <div class="linha usuario">
+                <strong>Usuário</strong>
+                <span>Escolhe serviço</span>
+                <span>Realiza ação</span>
+                <span>Recebe resultado</span>
+            </div>
 
-    <div class="etapa">
-        <h4>2. Pesquisa</h4>
-        <p>Busca horários e cinemas disponíveis.</p>
-    </div>
+            <div class="linha frontstage">
+                <strong>Frontstage</strong>
+                <span>Interface do sistema</span>
+                <span>Confirmação</span>
+                <span>Feedback</span>
+            </div>
 
-    <div class="etapa">
-        <h4>3. Compra</h4>
-        <p>Seleciona assentos e realiza o pagamento.</p>
-    </div>
+            <div class="linha backstage">
+                <strong>Backstage</strong>
+                <span>Processamento</span>
+                <span>Validação</span>
+                <span>Execução</span>
+            </div>
 
-    <div class="etapa">
-        <h4>4. Utilização</h4>
-        <p>Recebe o ingresso e vai ao cinema.</p>
-    </div>
+            <div class="linha suporte">
+                <strong>Suporte</strong>
+                <span>Banco de dados</span>
+                <span>APIs</span>
+                <span>Infraestrutura</span>
+            </div>
 
-</div>
-```
+        </div>
 
-</section>
+    </section>
 
-<section>
+    <!-- COMPARAÇÃO -->
+    <section>
 
-```
-<h2>O que é Service Blueprint?</h2>
+        <h2>Comparação</h2>
 
-<div class="card">
+        <table class="comparacao">
 
-    <p>
-        O Service Blueprint é uma representação detalhada de um serviço que mostra
-        não apenas o que o usuário vê, mas também todos os processos internos
-        necessários para entregar essa experiência.
-    </p>
+            <tr>
+                <th>Jornada do Usuário</th>
+                <th>Service Blueprint</th>
+            </tr>
 
-</div>
+            <tr>
+                <td>Foco na experiência do usuário</td>
+                <td>Foco também nos processos internos</td>
+            </tr>
 
-<div class="alerta">
+            <tr>
+                <td>Visão externa</td>
+                <td>Visão externa e interna</td>
+            </tr>
 
-    <strong>Diferença principal:</strong>
+            <tr>
+                <td>Mais simples</td>
+                <td>Mais detalhado</td>
+            </tr>
 
-    enquanto a Jornada do Usuário mostra a experiência percebida,
-    o Service Blueprint revela também os bastidores do serviço.
+        </table>
 
-</div>
-```
+    </section>
 
-</section>
+    <!-- CONCLUSÃO -->
+    <section class="card">
 
-<section>
+        <h2>Conclusão</h2>
 
-```
-<h2>Estrutura do Service Blueprint</h2>
+        <p>
+            Essas duas técnicas são complementares e fundamentais em IHC,
+            permitindo compreender tanto a experiência do usuário quanto
+            os processos internos de um sistema.
+        </p>
 
-<ul>
-    <li><strong>Evidências físicas:</strong> elementos visíveis ao usuário.</li>
-    <li><strong>Ações do usuário:</strong> atividades realizadas pelo cliente.</li>
-    <li><strong>Frontstage:</strong> interações visíveis.</li>
-    <li><strong>Backstage:</strong> atividades internas.</li>
-    <li><strong>Processos de suporte:</strong> sistemas e infraestrutura.</li>
-</ul>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Exemplo de Service Blueprint</h2>
-
-<h3>Aplicativo de entrega de refeições</h3>
-
-<div class="blueprint">
-
-    <div class="linha usuario">
-        <strong>Usuário</strong>
-        <span>Escolhe refeição</span>
-        <span>Realiza pagamento</span>
-        <span>Acompanha entrega</span>
-    </div>
-
-    <div class="linha frontstage">
-        <strong>Frontstage</strong>
-        <span>Exibe cardápio</span>
-        <span>Confirma pagamento</span>
-        <span>Mostra rastreamento</span>
-    </div>
-
-    <div class="linha backstage">
-        <strong>Backstage</strong>
-        <span>Recebe pedido</span>
-        <span>Processa transação</span>
-        <span>Aciona entregador</span>
-    </div>
-
-    <div class="linha suporte">
-        <strong>Suporte</strong>
-        <span>Banco de dados</span>
-        <span>Gateway de pagamento</span>
-        <span>Sistema de geolocalização</span>
-    </div>
+    </section>
 
 </div>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Exemplo da Vida Real</h2>
-
-<div class="card">
-
-    <h3>Agendamento de Consulta Médica</h3>
-
-    <p>
-        O paciente pesquisa uma clínica, escolhe um profissional,
-        agenda a consulta e recebe a confirmação.
-    </p>
-
-    <p>
-        Internamente, o sistema verifica disponibilidade,
-        registra os dados, atualiza agendas e envia notificações.
-    </p>
-
-</div>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Comparação</h2>
-
-<table class="comparacao">
-
-    <tr>
-        <th>Jornada do Usuário</th>
-        <th>Service Blueprint</th>
-    </tr>
-
-    <tr>
-        <td>Foco na experiência do usuário.</td>
-        <td>Foco na experiência e nos processos internos.</td>
-    </tr>
-
-    <tr>
-        <td>Mostra ações e emoções.</td>
-        <td>Mostra ações, pessoas e sistemas.</td>
-    </tr>
-
-    <tr>
-        <td>Visão externa.</td>
-        <td>Visão externa e interna.</td>
-    </tr>
-
-    <tr>
-        <td>Mais simples.</td>
-        <td>Mais detalhado.</td>
-    </tr>
-
-</table>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Aplicação em IHC</h2>
-
-<ul>
-    <li>Compreender o comportamento dos usuários.</li>
-    <li>Identificar problemas de usabilidade.</li>
-    <li>Projetar experiências mais eficientes.</li>
-    <li>Melhorar serviços digitais.</li>
-    <li>Apoiar o desenvolvimento centrado no usuário.</li>
-</ul>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Conclusão</h2>
-
-<p>
-    A Jornada do Usuário e o Service Blueprint são ferramentas complementares.
-    Enquanto a primeira ajuda a compreender a experiência do usuário, a segunda
-    permite visualizar toda a estrutura necessária para entregar essa experiência.
-</p>
-
-<p>
-    Em IHC, ambas contribuem para o desenvolvimento de sistemas mais eficientes,
-    acessíveis e alinhados às necessidades dos usuários.
-</p>
-```
-
-</section>
-
-<section>
-
-```
-<h2>Referências</h2>
-
-<ul>
-    <li>GARRETT, Jesse James. The Elements of User Experience.</li>
-    <li>NORMAN, Don. The Design of Everyday Things.</li>
-    <li>STICKDORN, Marc. This is Service Design Thinking.</li>
-    <li>NIELSEN, Jakob. Usability Engineering.</li>
-</ul>
-```
-
-</section>
 
 </body>
 </html>
