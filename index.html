@@ -1,9 +1,381 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-    <title>Minha Página</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada do Usuário e Service Blueprint - IHC</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/wilcilene/estudos@main/disciplinas/ihc/ihc.css">
+
+    <style>
+
+        .box {
+            border-left: 5px solid var(--cor-primaria);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .fluxo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .etapa {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+        }
+
+        .blueprint {
+            overflow-x: auto;
+        }
+
+        .destaque {
+            border-left: 5px solid var(--cor-secundaria);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
+
+    <header>
+        <h1>Jornada do Usuário e Service Blueprint</h1>
+        <p>Disciplina: Interação Humano-Computador (IHC)</p>
+    </header>
+
+    <section>
+
+        <h2>1. O que é Jornada do Usuário?</h2>
+
+        <p>
+            A Jornada do Usuário (User Journey) é uma representação visual
+            do caminho percorrido por uma pessoa para atingir um objetivo
+            utilizando um produto ou serviço.
+        </p>
+
+        <div class="box">
+            <strong>Objetivo:</strong>
+            compreender o que o usuário faz, pensa, sente e quais dificuldades
+            encontra durante sua experiência.
+        </div>
+
+        <h3>Elementos da Jornada</h3>
+
+        <ul>
+            <li>Ações realizadas pelo usuário</li>
+            <li>Pontos de contato</li>
+            <li>Objetivos do usuário</li>
+            <li>Emoções e sentimentos</li>
+            <li>Dificuldades encontradas</li>
+            <li>Oportunidades de melhoria</li>
+        </ul>
+
+    </section>
+
+    <section>
+
+        <h2>2. Exemplo de Jornada do Usuário</h2>
+
+        <h3>Exemplo: Compra de ingresso de cinema online</h3>
+
+        <div class="fluxo">
+
+            <div class="etapa">
+                Descoberta
+            </div>
+
+            <div class="etapa">
+                Pesquisa
+            </div>
+
+            <div class="etapa">
+                Compra
+            </div>
+
+            <div class="etapa">
+                Recebimento
+            </div>
+
+            <div class="etapa">
+                Uso
+            </div>
+
+        </div>
+
+        <table>
+
+            <tr>
+                <th>Etapa</th>
+                <th>Ação</th>
+                <th>Sentimento</th>
+                <th>Possível Problema</th>
+            </tr>
+
+            <tr>
+                <td>Pesquisa</td>
+                <td>Buscar filmes</td>
+                <td>Satisfação</td>
+                <td>Muitas opções disponíveis</td>
+            </tr>
+
+            <tr>
+                <td>Compra</td>
+                <td>Selecionar assento</td>
+                <td>Neutralidade</td>
+                <td>Lentidão do sistema</td>
+            </tr>
+
+            <tr>
+                <td>Pagamento</td>
+                <td>Inserir dados de pagamento</td>
+                <td>Preocupação</td>
+                <td>Falha na transação</td>
+            </tr>
+
+            <tr>
+                <td>Recebimento</td>
+                <td>Receber ingresso</td>
+                <td>Satisfação</td>
+                <td>Confirmação não recebida</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+
+        <h2>3. O que é Service Blueprint?</h2>
+
+        <p>
+            O Service Blueprint é uma evolução da Jornada do Usuário.
+            Além de mostrar a experiência do usuário, ele apresenta
+            os processos internos necessários para que o serviço funcione.
+        </p>
+
+        <div class="box">
+            <strong>Objetivo:</strong>
+            visualizar a relação entre usuários, colaboradores,
+            sistemas e processos organizacionais.
+        </div>
+
+        <p>
+            Enquanto a Jornada do Usuário mostra a experiência percebida pelo cliente,
+            o Service Blueprint revela também os bastidores que sustentam essa experiência.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h2>4. Estrutura de um Service Blueprint</h2>
+
+        <div class="blueprint">
+
+            <table>
+
+                <tr>
+                    <th>Camada</th>
+                    <th>Descrição</th>
+                </tr>
+
+                <tr>
+                    <td>Evidências Físicas</td>
+                    <td>Site, aplicativo, comprovantes e mensagens.</td>
+                </tr>
+
+                <tr>
+                    <td>Ações do Usuário</td>
+                    <td>Pesquisar, selecionar, comprar e utilizar.</td>
+                </tr>
+
+                <tr>
+                    <td>Frontstage</td>
+                    <td>Interações visíveis para o usuário.</td>
+                </tr>
+
+                <tr>
+                    <td>Backstage</td>
+                    <td>Processos internos não visíveis.</td>
+                </tr>
+
+                <tr>
+                    <td>Processos de Suporte</td>
+                    <td>Bancos de dados, APIs e infraestrutura.</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>5. Exemplo de Service Blueprint</h2>
+
+        <h3>Aplicativo de entrega de refeições</h3>
+
+        <table>
+
+            <tr>
+                <th>Camada</th>
+                <th>Pedido</th>
+                <th>Pagamento</th>
+                <th>Entrega</th>
+            </tr>
+
+            <tr>
+                <td>Usuário</td>
+                <td>Escolhe refeição</td>
+                <td>Efetua pagamento</td>
+                <td>Acompanha entrega</td>
+            </tr>
+
+            <tr>
+                <td>Frontstage</td>
+                <td>Exibição do cardápio</td>
+                <td>Confirmação de pagamento</td>
+                <td>Rastreamento da entrega</td>
+            </tr>
+
+            <tr>
+                <td>Backstage</td>
+                <td>Recebimento do pedido</td>
+                <td>Processamento financeiro</td>
+                <td>Acionamento do entregador</td>
+            </tr>
+
+            <tr>
+                <td>Suporte</td>
+                <td>Banco de dados</td>
+                <td>Gateway de pagamento</td>
+                <td>Sistema de geolocalização</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+
+        <h2>6. Diferenças entre Jornada do Usuário e Service Blueprint</h2>
+
+        <table>
+
+            <tr>
+                <th>Jornada do Usuário</th>
+                <th>Service Blueprint</th>
+            </tr>
+
+            <tr>
+                <td>Foco na experiência do usuário</td>
+                <td>Foco na experiência e nos processos internos</td>
+            </tr>
+
+            <tr>
+                <td>Mostra ações e emoções</td>
+                <td>Mostra ações, sistemas e processos</td>
+            </tr>
+
+            <tr>
+                <td>Visão externa</td>
+                <td>Visão externa e interna</td>
+            </tr>
+
+            <tr>
+                <td>Identifica problemas de experiência</td>
+                <td>Identifica causas dos problemas</td>
+            </tr>
+
+            <tr>
+                <td>Mais simples</td>
+                <td>Mais detalhado</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+
+        <h2>7. Exemplo da Vida Real</h2>
+
+        <h3>Agendamento de Consulta Médica</h3>
+
+        <div class="destaque">
+
+            <strong>Jornada do Usuário</strong>
+
+            <ol>
+                <li>Procura uma clínica.</li>
+                <li>Escolhe um médico.</li>
+                <li>Agenda a consulta.</li>
+                <li>Recebe a confirmação.</li>
+                <li>Comparece ao atendimento.</li>
+            </ol>
+
+        </div>
+
+        <div class="destaque">
+
+            <strong>Service Blueprint</strong>
+
+            <ul>
+                <li>O sistema verifica horários disponíveis.</li>
+                <li>Os dados são registrados no banco de dados.</li>
+                <li>A equipe administrativa recebe a solicitação.</li>
+                <li>Mensagens de confirmação são enviadas.</li>
+                <li>A agenda do médico é atualizada automaticamente.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>8. Aplicação em IHC</h2>
+
+        <ul>
+            <li>Melhoria da usabilidade.</li>
+            <li>Identificação de problemas de interação.</li>
+            <li>Desenvolvimento centrado no usuário.</li>
+            <li>Integração entre equipes multidisciplinares.</li>
+            <li>Melhoria da experiência do usuário.</li>
+        </ul>
+
+    </section>
+
+    <section>
+
+        <h2>9. Conclusão</h2>
+
+        <p>
+            A Jornada do Usuário permite compreender a experiência vivenciada
+            pelos usuários durante a execução de uma tarefa. Já o Service Blueprint
+            complementa essa visão ao evidenciar os processos internos necessários
+            para oferecer essa experiência.
+        </p>
+
+        <p>
+            Em projetos de IHC, ambas as técnicas são amplamente utilizadas para
+            identificar problemas, melhorar a usabilidade e projetar serviços
+            mais eficientes e centrados no usuário.
+        </p>
+
+    </section>
+
 </body>
+
 </html>
